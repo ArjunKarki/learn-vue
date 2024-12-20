@@ -25,11 +25,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 const name = ref("Arjun Kari");
 const status = ref("inactive");
-const tasks = ref(["Learn Vue", "Initialize Vue", "Master Vue"]);
+const tasks = ref([]);
 const link = ref("https://google.com");
 const newTask = ref("");
 
@@ -46,4 +46,10 @@ const addTask = () => {
 const deleteTask = (index) => {
   tasks.value.splice(index, 1);
 };
+
+onMounted(async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const resJson = await res.json();
+  tasks.value = resJson.map((t) => t.title);
+});
 </script>
