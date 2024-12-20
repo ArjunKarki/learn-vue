@@ -16,19 +16,26 @@
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
-  data() {
-    return {
-      name: "Arjun Kari",
-      status: "inactive",
-      tasks: ["Learn Vue", "Initialize Vue", "Master Vue"],
-      link: "https://google.com",
+  setup() {
+    const name = ref("Arjun Kari");
+    const status = ref("inactive");
+    const tasks = ref(["Learn Vue", "Initialize Vue", "Master Vue"]);
+    const link = ref("https://google.com");
+
+    const toggleStatus = () => {
+      status.value = status.value === "active" ? "inactive" : "active";
     };
-  },
-  methods: {
-    toggleStatus() {
-      this.status = this.status === "active" ? "inactive" : "active";
-    },
+
+    return {
+      name,
+      status,
+      tasks,
+      link,
+      toggleStatus,
+    };
   },
 };
 </script>
