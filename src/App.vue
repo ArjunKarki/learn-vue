@@ -15,27 +15,15 @@
   <a :href="link">Google</a>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 
-export default {
-  setup() {
-    const name = ref("Arjun Kari");
-    const status = ref("inactive");
-    const tasks = ref(["Learn Vue", "Initialize Vue", "Master Vue"]);
-    const link = ref("https://google.com");
+const name = ref("Arjun Kari");
+const status = ref("inactive");
+const tasks = ref(["Learn Vue", "Initialize Vue", "Master Vue"]);
+const link = ref("https://google.com");
 
-    const toggleStatus = () => {
-      status.value = status.value === "active" ? "inactive" : "active";
-    };
-
-    return {
-      name,
-      status,
-      tasks,
-      link,
-      toggleStatus,
-    };
-  },
+const toggleStatus = () => {
+  status.value = status.value === "active" ? "inactive" : "active";
 };
 </script>
